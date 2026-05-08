@@ -127,15 +127,7 @@ public class NPCTriggerDialogue : MonoBehaviour
         if (bossDialogueCanvas != null)
         {
             bossDialogueCanvas.SetActive(true);
-
-            if (dialogueScript != null)
-            {
-                var method = dialogueScript.GetType().GetMethod("StartDialogue");
-                if (method != null)
-                {
-                    method.Invoke(dialogueScript, null);
-                }
-            }
+            // OldmanDialogue 的 OnEnable() 会自动调用 StartDialogue()
         }
 
         LockPlayerMovement(true);
