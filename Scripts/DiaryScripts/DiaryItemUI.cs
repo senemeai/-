@@ -27,11 +27,11 @@ public class DiaryItemUI : MonoBehaviour
         // 显示日期时间
         textDate.text = $"{diary.date.Substring(5)} {diary.time}";
 
-        // 显示预览（前20字）
-        string preview = diary.content.Length > 20
-            ? diary.content.Substring(0, 20) + "..."
-            : diary.content;
-        textPreview.text = string.IsNullOrEmpty(preview) ? "（无内容）" : preview;
+        // 显示预览（前5字）
+        string source = !string.IsNullOrEmpty(diary.title) ? diary.title : diary.content;
+        string preview = source.Length > 6 ? source.Substring(0, 6) + "..." : source;
+
+        textPreview.text = string.IsNullOrEmpty(preview) ? "暂无内容" : preview;
 
         // 绑定按钮
         btnOpen.onClick.RemoveAllListeners();

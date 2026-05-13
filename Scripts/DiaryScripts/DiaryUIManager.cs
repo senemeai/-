@@ -20,6 +20,7 @@ public class DiaryUIManager : MonoBehaviour
     [Header("日记详情")]
     public GameObject panelDiaryDetail;
     public Button btnCloseDetail;
+    public TextMeshProUGUI textDetailTitle;
     public TextMeshProUGUI textDetailDate;
     public TextMeshProUGUI textDetailWeather;
     public TextMeshProUGUI textDetailMood;
@@ -116,6 +117,9 @@ public class DiaryUIManager : MonoBehaviour
 
     private void OnOpenDiary(DiaryEntry diary)
     {
+        // 显示标题（标题为空时显示默认提示）
+        textDetailTitle.text = string.IsNullOrEmpty(diary.title) ? "无标题" : diary.title;
+
         textDetailDate.text = $"{diary.date} {GetWeekDay(diary.date)} {diary.time}";
         textDetailWeather.text = GetWeatherIcon(diary.weather) + " " + diary.weather;
         textDetailMood.text = diary.mood;
@@ -282,14 +286,14 @@ public class DiaryUIManager : MonoBehaviour
     {
         switch (weather)
         {
-            case "晴": return "天";
-            case "多云": return "天";
-            case "阴": return "天";
-            case "小雨": return "天";
-            case "大雨": return "天";
-            case "雪": return "天";
-            case "雾": return "天";
-            default: return "天";
+            case "晴": return "晴天";
+            case "多云": return "多云";
+            case "阴": return "阴天";
+            case "小雨": return "小雨";
+            case "大雨": return "大雨";
+            case "雪": return "学";
+            case "雾": return "雾天";
+            default: return "天气";
         }
     }
 

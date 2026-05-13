@@ -147,7 +147,7 @@ public class LoginUIManager : MonoBehaviour
         }
 
         // 登录成功
-        
+
         UserDataManager.Instance.RememberUsername(username);
         UserDataManager.Instance.SetCurrentUser(username);  // ← 加这行
         currentUsername = username;
@@ -281,6 +281,7 @@ public class LoginUIManager : MonoBehaviour
     // 进入游戏
     private void OnEnterGameClick()
     {
+        AudioManager.Instance?.ResumeDefaultAudio();
         SceneManager.LoadScene("SampleScene");
     }
 

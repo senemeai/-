@@ -242,6 +242,7 @@ public class SettingsUIManager : MonoBehaviour
 
     private void OnConfirmExit()
     {
+        AudioManager.Instance.StopAllAudio();
         UserDataManager.Instance.ClearCurrentUser();
         SceneManager.LoadScene("LoginScene");
     }
